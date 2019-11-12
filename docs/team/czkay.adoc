@@ -39,12 +39,13 @@ to view expenses in a past period. It involves adjustments to the existing model
 well with the current implementation of other core features such as undoredo and statistics.
 
 * *Minor enhancements*: I implemented several time-based features in MooLah.
-** Fully implemented the Timestamp fields into MooLah's expenses and events, hence allowing users to keep track of when
+** Fully implemented the Timestamp field into MooLah's expenses and events, hence allowing users to keep track of when
 exactly their expenses and events happen.
 ** Implemented constant system-time checking in MooLah via the use of a timer that runs on a parallel thread. This allows
-MooLah to accurately refresh budgets and prompt users to add expenses from transpired events.
+MooLah to accurately refresh budgets and enables precise timekeeping of expenses, events and budgets. (https://github.com/AY1920S1-CS2103T-T11-1/main/pull/132[#132])
 ** Integrated, with some modifications, the third-party Natty library into MooLah. This allows MooLah to support
-natural language date-time parsing (e.g. 'tomorrow', '1 week ago').
+natural language date-time parsing (https://github.com/AY1920S1-CS2103T-T11-1/main/pull/132[#132])
+** Improved the parsing and validity-checking of the Price field. (https://github.com/AY1920S1-CS2103T-T11-1/main/pull/216[#216])
 
 * https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=czkay&sort=groupTitle&sortWithin=title&since=2019-09-06&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=czkay&tabRepo=AY1920S1-CS2103T-T11-1%2Fmain%5Bmaster%5D[*Code contributed*]
 
@@ -66,7 +67,7 @@ and https://ay1920s1-cs2103t-t11-1.github.io/main/DeveloperGuide.html#product-su
 ** Community:
 *** PRs reviewed (with non-trivial review comments): https://github.com/AY1920S1-CS2103T-T11-1/main/pull/84[#84],
 https://github.com/AY1920S1-CS2103T-T11-1/main/pull/100[#100]
-*** Gave suggestions for other teams in the module (https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/28#pullrequestreview-306302342[Example])
+*** Gave suggestions to other teams in the module (https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/28#pullrequestreview-306302342[Example])
 
 == Contributions to the User Guide
 
@@ -75,6 +76,7 @@ https://github.com/AY1920S1-CS2103T-T11-1/main/pull/100[#100]
 They showcase my ability to write documentation targeting end-users._
 |===
 
+include::../UserGuide.adoc[tag=natty]
 include::../UserGuide.adoc[tag=events]
 
 == Contributions to the Developer Guide

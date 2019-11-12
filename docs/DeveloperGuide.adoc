@@ -669,8 +669,8 @@ As mentioned earlier, MooLah displays reminders of upcoming events during launch
 
 image::DisplayReminders.png[width = 70%, align=center]
 
-To allow for accurate prompting of transpired events, MooLah tracks system time every 10 seconds using a `Timer` running
-on a parallel thread. An event is then deemed to have transpired if its timestamp has gone past system time.
+To allow for precise timekeeping of expenses and events as well as accurate prompting of transpired events, MooLah tracks system time every 0.05 seconds using a `Timer` running
+on a parallel thread. Using a different `Timer`, MooLah then checks for transpired events every 2 seconds; an event is then deemed to have transpired if its timestamp has gone past system time.
 The following sequence diagram shows how MooLah handles transpired events:
 
 image::TranspiredEventsSequenceDiagram.png[]
@@ -1345,24 +1345,6 @@ Use case resumes at step 4.
 +
 Use case resumes at step 4.
 
-
-[discrete]
-=== Use case: Show reminders
-*MSS*
-
-1.  User requests to see reminders.
-2.  MooLah shows a list of reminders.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 2a. There are no reminders.
-+
-Use case ends.
-
-
 [discrete]
 === Use case: Add event
 
@@ -1751,13 +1733,15 @@ Clearing all budgets in MooLah
    Expected: Similar to previous.
 
 === Testing of events
+
+.. Prerequisites: None.
 .. Test case: `addevent d/ test p/ 10 c/ Shopping t/ a week from now` +
    Expected: A success message will appear.
 .. Now, view the event list using either `listevent` or `view event list`. (Event commands can be inputted on any panel, but this is to facilitate the next step.) +
    Expected: The event with description `test` should be at the bottom of the event list.
 .. Edit the event via the command `editevent <INDEX> t/ now`, where <INDEX> is the index of the event you want to test. +
    Expected: A success message will appear.
-.. Within 10 seconds, a popup will appear to prompt for the automatic addition of an expense corresponding to the event.
+.. Within 2 seconds, a popup will appear to prompt for the automatic addition of an expense corresponding to the event.
 Pressing 'Yes' will add the expense into whichever primary budget you were on when you added the event. You can then view that budget
 to see that the expense has been added.
 

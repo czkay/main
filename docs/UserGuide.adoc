@@ -243,8 +243,7 @@ Natty naturally parses all datetime formats in the American format (e.g. MM/dd, 
 In MooLah however, we have modified the parser such that all formats are parsed in the international format (e.g. dd/MM).
 So, the tryout page on Natty's official website will parse dates differently in this aspect.
 [NOTE]
-The seconds or even nanoseconds you add to your datetime inputs won't be processed by MooLah! (i.e. all seconds and
-nanoseconds are rounded down to 0.)
+Any nanoseconds you add to your datetime inputs won't be processed by MooLah! (i.e. all nanoseconds are rounded down to 0.)
 
 // end::natty[]
 
@@ -431,7 +430,7 @@ image::TranspiredEventsPopup.png[width="790"]
 Once an event has transpired, it is permanently deleted from MooLah and you cannot get it back! Undoing MooLah to a state where
 that event was still present would not restore the event.
 [NOTE]
-MooLah updates time every 10 seconds, so you may experience a slight delay of 10 seconds maximum when it comes to
+MooLah checks for transpired events every 2 seconds, so you may experience a very slight delay when it comes to
 event popups! +
 A popup would also not appear if the transpired event has had its corresponding budget deleted.
 
@@ -445,8 +444,6 @@ addevent d/<DESCRIPTION> p/<PRICE> c/<CATEGORY> t/<TIMESTAMP>
 ----
 ****
 * Events are potential future expenses, so the `TIMESTAMP` field is compulsory and must contain a future time.
-* Due to how MooLah rounds all seconds to zero, inputting events with very precise timings such as `1 second from now`
-will likely result in errors since MooLah will interpret it as a past datetime input.
 * You should only input one of the following into the `CATEGORY` field:
 `FOOD`, `TRAVEL`, `TRANSPORT`, `SHOPPING`, `UTILITIES`, `HEALTHCARE`, `ENTERTAINMENT`, `EDUCATION`, `OTHERS`.
 These categories are case-insensitive.
@@ -484,6 +481,8 @@ This will update the price of the 2nd event in the current list to be 300.
 
 ****
 * Edits the event at the specified `INDEX`. The index refers to the index number shown in the currently displayed list.
+* In the case that an event of yours was pushed early, you can edit an event's timestamp
+to before your current time.
 * The index *must be a positive integer* 1, 2, 3, ...
 * You must provide at least one of the optional fields.
 * Existing values will be updated to the input values.
